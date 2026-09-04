@@ -5,7 +5,7 @@ metadata:
   name: notification-service-sa
   namespace: task-management
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::655700896650:role/eksctl-ekswithavinash-addon-iamserviceaccount-Role1-SEiugOvbbT3S
+    eks.amazonaws.com/role-arn: arn:aws:iam::992189742322:role/eksctl-ekswithavinash-addon-iamserviceaccount-Role1-EUO6Wa3jzliZ
 
 ---
 apiVersion: apps/v1
@@ -52,7 +52,7 @@ spec:
         - name: SES_FROM_EMAIL
           value: "avizway@gmail.com"
         - name: TASK_OWNER_EMAIL
-          value: "avizway@gmail.com"
+          value: "077avinashreddy@gmail.com"
         - name: AWS_REGION
           value: "ap-south-1"
         - name: OTEL_SERVICE_NAME

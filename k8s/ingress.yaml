@@ -1,9 +1,9 @@
 # Ingress (AWS ALB with Route53 Domain)
 # 
 # BEFORE DEPLOYING:
-# 1. Replace <ACM_CERTIFICATE_ARN> with your ACM certificate ARN for awswithavinashreddy.com
+# 1. Replace <ACM_CERTIFICATE_ARN> with your ACM certificate ARN for komali.online
 #    Get it from: aws acm list-certificates --region ap-south-1
-# 2. Ensure your Route53 hosted zone exists for awswithavinashreddy.com
+# 2. Ensure your Route53 hosted zone exists for komali.online
 #
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -19,7 +19,7 @@ metadata:
     # HTTPS/SSL Configuration
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/ssl-redirect: "443"
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:655700896650:certificate/90853298-82f5-4a26-a18f-ee186f2ed6ad
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:992189742322:certificate/9ed5ba42-fd11-472b-a469-e45fad013981
     
     # Health Check Configuration
     alb.ingress.kubernetes.io/healthcheck-path: /health
@@ -31,12 +31,12 @@ metadata:
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=60
     
     # External DNS (auto-creates Route53 record)
-    external-dns.alpha.kubernetes.io/hostname: awswithavinashreddy.com,www.awswithavinashreddy.com,jaeger.awswithavinashreddy.com
+    external-dns.alpha.kubernetes.io/hostname: komali.online,www.komali.online,jaeger.komali.online
 spec:
   ingressClassName: alb
   rules:
   # Main domain
-  - host: awswithavinashreddy.com
+  - host: komali.online
     http:
       paths:
       - path: /api/auth
@@ -82,7 +82,7 @@ spec:
             port:
               number: 80
   # WWW subdomain
-  - host: www.awswithavinashreddy.com
+  - host: www.komali.online
     http:
       paths:
       - path: /
@@ -93,7 +93,7 @@ spec:
             port:
               number: 80
   # Jaeger tracing UI
-  - host: jaeger.awswithavinashreddy.com
+  - host: jaeger.komali.online
     http:
       paths:
       - path: /
